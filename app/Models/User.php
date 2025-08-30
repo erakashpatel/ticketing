@@ -2,20 +2,15 @@
 
 namespace App\Models;
 
-#use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Http\Filters\V1\QueryFilter;
-use Illuminate\Database\Eloquent\Builder;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Database\Eloquent\Concerns\HasUlids;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\User> */
-    use HasApiTokens, HasFactory, Notifiable, HasUlids;
+    /** @use HasFactory<\Database\Factories\UserFactory> */
+    use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -25,7 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password'
+        'password',
     ];
 
     /**
@@ -49,13 +44,5 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function tickets() : HasMany {
-        return $this->hasMany(Ticket::class);
-    }
-
-    public function scopeFilter(Builder $builder, QueryFilter $filters) {
-        return $filters->apply($builder);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,25 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create users for testing
-        //$users = \App\Models\User::factory(10)->create();
-        
-        // Create a test admin user
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Admin User',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
+        // User::factory(10)->create();
+
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
         ]);
-
-        \App\Models\Ticket::factory(100)
-            ->recycle($user)
-            ->create();
-
-        $tickets = \App\Models\Ticket::inRandomOrder()->limit(30)->get();
-        foreach ($tickets as $ticket) {
-            $ticket->update([
-                'notes' => fake()->sentence(10) . ' - Internal note for tracking purposes.'
-            ]);
-        }
     }
 }
