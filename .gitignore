@@ -21,3 +21,7 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+
+# macOS system files
+.DS_Store
+**/.DS_Store

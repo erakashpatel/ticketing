@@ -29,7 +29,7 @@ A production-style single-page application that lets a help-desk team submit sup
 - PHP 8.2 or higher
 - Composer
 - Node.js 16+ and npm
-- SQLite (default) or MySQL
+- MySQL (XAMPP default) or SQLite
 - OpenAI API key (optional, for real AI classification)
 
 ### Installation Steps
@@ -167,7 +167,7 @@ All API endpoints require bearer token authentication via Laravel Sanctum.
 ### Backend Design
 - **Laravel 11**: Modern PHP framework with kernel-less structure
 - **Sanctum**: API authentication for SPA
-- **SQLite**: Lightweight database for easy setup
+- **MySQL**: Robust database with XAMPP for easy local development
 - **Queue Jobs**: Asynchronous AI processing to avoid blocking requests
 - **Rate Limiting**: Prevents API abuse and controls OpenAI costs
 - **Resource Classes**: Consistent API response formatting
@@ -235,7 +235,7 @@ php artisan tickets:bulk-classify --limit=50
 ### Assumptions Made
 1. **User Authentication**: Simplified login system for demo purposes
 2. **Single Tenant**: No multi-organization support
-3. **SQLite Default**: Easy setup, suitable for small teams
+3. **MySQL with XAMPP**: Easy setup with familiar local development environment
 4. **English Only**: AI classification optimized for English text
 5. **Basic Permissions**: Simple user-based access control
 
@@ -254,15 +254,13 @@ php artisan tickets:bulk-classify --limit=50
 3. **File Attachments**: Support for ticket attachments and images
 4. **Email Integration**: Email notifications and email-to-ticket creation
 5. **Advanced Analytics**: Time-series data, SLA tracking, agent performance
-6. **Mobile App**: React Native or Flutter mobile application
 
 ### Technical Improvements
 1. **Testing**: Comprehensive test suite (unit, integration, E2E)
-2. **Docker**: Containerized development and deployment
-3. **CI/CD**: Automated testing and deployment pipeline
-4. **Performance**: Database indexing, query optimization, caching
-5. **Security**: Rate limiting, input validation, audit logging
-6. **Monitoring**: Application performance monitoring and error tracking
+2. **CI/CD**: Automated testing and deployment pipeline
+3. **Performance**: Database indexing, query optimization, caching
+4. **Security**: Rate limiting, input validation, audit logging
+5. **Monitoring**: Application performance monitoring and error tracking
 
 ### UX Enhancements
 1. **Dark Mode**: User preference for dark/light themes
